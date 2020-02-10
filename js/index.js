@@ -40,3 +40,61 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+logo.src = "img/logo.png";
+
+let title = document.querySelector("title");
+title.textContent = "Great Idea! DOM";
+
+let navObj = siteContent["nav"];
+let navItems = document.querySelectorAll("nav a");
+
+for (i = 1; i < navItems.length - 1; i++) {
+  navItems[i].textContent = navObj["nav-item-" + i.toString(10)];
+}
+
+let cta = siteContent["cta"];
+
+let ctaHeader = document.querySelector("h1");
+ctaHeader.innerHTML = cta["h1"];
+
+let ctaBtn = document.querySelector(".cta-text button");
+ctaBtn.textContent = cta["button"];
+
+let ctaImg = document.querySelector("#cta-img");
+ctaImg.src = "img/header-img.png";
+
+let mainContentHeader = document.querySelectorAll(".text-content h4");
+
+let mainContentText = document.querySelectorAll(".text-content p");
+
+let mainContentObject = siteContent["main-content"];
+
+let mainContentArr = Object.keys(mainContentObject).filter(item =>
+  item.includes("h4")
+);
+
+let mainContentTxtArr = Object.keys(mainContentObject).filter(item =>
+  item.includes("content")
+);
+
+for (i = 0; i < mainContentHeader.length; i++) {
+  mainContentHeader[i].textContent = mainContentObject[`${mainContentArr[i]}`];
+}
+
+for (i = 0; i < mainContentText.length; i++) {
+  mainContentText[i].textContent = mainContentObject[`${mainContentTxtArr[i]}`];
+}
+
+let middleImg = document.querySelector("#middle-img");
+middleImg.src = "img/mid-page-accent.jpg";
+
+let contactSection = document.querySelector(".contact");
+
+contactSection.firstElementChild.textContent = siteContent.contact["contact-h4"];
+
+contactSection.childNodes[3].innerHTML = "<p>123 Way 456 Street<br>Somewhere,USA</p>";
+
+contactSection.childNodes[5].textContent = siteContent.contact["phone"];
+
+contactSection.childNodes[7].textContent = siteContent.contact["email"];
